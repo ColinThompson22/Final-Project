@@ -8,4 +8,4 @@
 
 #game state function (Colin)
 
-#player method (Shafquat)
+#player method (Shafiqat)
