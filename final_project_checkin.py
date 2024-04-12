@@ -2,7 +2,25 @@
 import pandas as pd
 
 #start game function (Johnathan)
+def start_game(questions, player_answers):
+    print("This is the akinator style program, the game will try to guess what animal you're thinking about through a series of questions. Please respond with either yes/no!")
 
+    for arr in questions:
+        for (q, k) in arr:
+            answer = input(f" {q} ")
+            if answer.lower() == "yes":
+                player_answers.append(k)
+                break
+
+questions = [[("Is it Black?: ", "Black"), ("Is it White: ", "White")],
+     [("Is it an Herbivore?: ", "Herbivore"), ("Is it a Carnivore: ", "Carnivore")],
+      [("Does it live in the Grassland?: ", "Grassland"), ("Does it live in the Arctic: ", "Arctic")]]
+
+player_answers = []
+
+start_game(questions, player_answers)
+
+print("Player answers:", player_answers)
 #match question function (Shahil)
 def match_question(answer, dataset):
     """Matches questions to answers taken from the start_game function and asks
