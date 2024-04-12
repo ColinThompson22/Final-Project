@@ -5,7 +5,13 @@
 #match question function (Shahil)
 
 #question format function (Mohammad)
-def question_file:
+def question_file(self):
+    quesiton_options:["Animal", "Height", "Weight", Color	Lifespan (years)	Diet	Habitat	Predators	Average Speed (km/h)	Countries Found	Conservation Status	Family	Gestation Period (days)	Top Speed (km/h)	Social Structure	Offspring per Birth]
+              math. 
+#allows computer to ask the user what certain characteristics are from the categories from the list
+
+
+#if self.num_questions_asked < or > blank/numerical then guess ra
 
 
 #game state function (Colin)
