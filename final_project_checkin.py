@@ -60,7 +60,7 @@ characteristic = random.choice(question_categories)
 
 #Format and print the question
 #Allows computer to ask the user what certain characteristics are from the categories from the list
-computer_question = f"What is the {question_options[random.choice]} of the animal you're thinking of?"
+computer_question = f"What is the {characteristic) of the animal you're thinking of?"
 print(question)
     
 
@@ -74,6 +74,7 @@ self.max_questions_before_guess = 10
     else:
         # Select a random characteristic to ask about
         characteristic = random.choice(question_categories)
+
 
 
 
