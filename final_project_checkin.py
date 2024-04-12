@@ -3,6 +3,17 @@ import pandas as pd
 
 #start game function (Johnathan)
 def start_game(questions, player_answers):
+    """
+    Starts the Akinator-style game where the program asks questions to 
+    form a guess about which animal the player is thinking of
+    
+    Args:
+        questions(list of lists of tuples): The list of questions the program will ask the player
+        player_answers(list): A list that stores the player answers
+    
+    Side Effects:
+        Prints out the player answers as a list called player_answers
+    """
     print("This is the akinator style program, the game will try to guess what animal you're thinking about through a series of questions. Please respond with either yes/no!")
 
     for arr in questions:
