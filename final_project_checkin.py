@@ -21,6 +21,8 @@ player_answers = []
 start_game(questions, player_answers)
 
 print("Player answers:", player_answers)
+
+
 #match question function (Shahil)
 def match_question(answer, dataset):
     """Matches questions to answers taken from the start_game function and asks
@@ -56,8 +58,6 @@ def match_question(answer, dataset):
             return f"The animal you're thinking of is: {final_match}"
     
     
-    
-
 #question format function (Mohammad)
 def question_file(self):
     '''
@@ -92,7 +92,6 @@ self.max_questions_before_guess = 10
     else:
         # Select a random characteristic to ask about
         characteristic = random.choice(question_categories)
-
 
 
 
