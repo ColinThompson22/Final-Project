@@ -81,7 +81,7 @@ def question_file(self):
         None. The function prints a question to the console for the user to answer.
     '''
 #List of categories the computer guesses from 
- question_categories = ["Animal", "Height (cm)", "Weight (kg)", "Color", "Lifespan (years)", "Diet", "Habitat", "Predators", "Average Speed (km/h)", "Countries Found", "Conservation Status", "Family", "Gestation Period (days)", "Top Speed (km/h)", "Social Structure", "Offspring per Birth"]
+ question_categories = ["Animal", "Color", "Diet", "Habitat", "Predators", "Countries Found"]
         
 
 # Select a random characteristic to ask about
