@@ -129,3 +129,17 @@ def gamestate(self, response):
     print(f"The number of questions asked is {self.num_questions_asked}")
     print(f"Yhe number of animals left is {len(self.animals)}")
 #player method (Shafiqat)
+def player_input():
+    """Prompt the player for their name and welcome them to the Akinator Game.
+
+    This function displays a welcome message for the Akinator Game and prompts 
+    the player to enter their name.
+    The player's name is then returned as the result of the function.
+
+    Returns:
+        str: The name entered by the player."""
+    
+    print("Welcome to the Akinator Game!")
+    print("Please answer the following questions with yes or no.")
+    player_input = input(f"Please enter your name")
+    return player_input 
