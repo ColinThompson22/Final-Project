@@ -60,10 +60,17 @@ def match_question(answer, dataset):
                           == answer["habitat"])]
     final_match_list = filtered_df["Animal"].tolist()
     final_match = ""
+    tries = 0
     while final_match == "":
         final_question = input(f"Is the animal a {final_match_list[0]}?: ")
         if final_question == "no":
             final_match_list.pop(0)
+            tries += 1
+            if tries == 3:
+                #keep track of total score, maybe have an attribute in init
+                #that initializes the variable so that it can be used throughout
+                #have a score keeper method too
+                return f"I give up!"
         elif final_question == "yes":
             final_match = final_match_list[0]
             return f"The animal you're thinking of is: {final_match}"
