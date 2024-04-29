@@ -1,5 +1,6 @@
 #import statements
 import pandas as pd
+from argparse import ArgumentParser
 
 #start game function (Johnathan)
 def start_game(questions, player_answers):
@@ -151,3 +152,11 @@ def player_input():
     print("Please answer the following questions with yes or no.")
     player_input = input(f"Please enter your name")
     return player_input 
+
+def parse_args(argslist):
+   parser= ArgumentParser()
+   parser.add_argument("questions", help= "the question being asked to the"
+                       "user")
+   parser.add_argument("player_answers", help= "THe answer the player"
+                       "inputs")
+   return parser.parse_args(argslist)
