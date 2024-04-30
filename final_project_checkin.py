@@ -1,6 +1,7 @@
 #import statements
 import pandas as pd
 from argparse import ArgumentParser
+import sys
 
 #start game function (Johnathan)
 def start_game(questions, player_answers):
@@ -65,6 +66,7 @@ def match_question(answer, dataset):
     while final_match == "":
         final_question = input(f"Is the animal a {final_match_list[0]}?: ")
         if final_question == "no":
+
             final_match_list.pop(0)
             tries += 1
             if tries == 3:
@@ -160,3 +162,6 @@ def parse_args(argslist):
    parser.add_argument("player_answers", help= "THe answer the player"
                        "inputs")
    return parser.parse_args(argslist)
+if __name__ == "__main__":
+    args= parse_args(sys.argv[1:])
+    start_game(args.questions, args.player_answers)
