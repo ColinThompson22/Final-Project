@@ -156,6 +156,13 @@ def player_input():
     return player_input 
 
 def parse_args(argslist):
+    """Parses the command line arguments
+       
+       Args:
+       argslist(list of str)= a list of arguments from the command line
+       
+       Returns:
+       namespcae= returns the parsed arguments as a namespace"""
    parser= ArgumentParser()
    parser.add_argument("questions", help= "the question being asked to the"
                        "user")
