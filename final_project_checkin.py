@@ -170,12 +170,12 @@ def parse_args(argslist):
        
        Returns:
        namespcae= returns the parsed arguments as a namespace"""
-   parser= ArgumentParser()
-   parser.add_argument("questions", help= "the question being asked to the"
+    parser= ArgumentParser()
+    parser.add_argument("questions", help= "the question being asked to the"
                        "user")
-   parser.add_argument("player_answers", help= "THe answer the player"
+    parser.add_argument("player_answers", help= "THe answer the player"
                        "inputs")
-   return parser.parse_args(argslist)
+    return parser.parse_args(argslist)
 if __name__ == "__main__":
     args= parse_args(sys.argv[1:])
     start_game(args.questions, args.player_answers)
