@@ -4,6 +4,37 @@ import random
 from argparse import ArgumentParser
 import sys
 
+#start game function (Johnathan)
+def start_game():
+        """
+        Starts the Akinator-style game where the program asks questions to 
+        form a guess about which animal the player is thinking of
+        
+        Side Effects:
+            Prints out the player answers as a list called player_answers
+        """
+        
+        questions = [[("Is it Black?: ", "Black"), ("Is it White?: ", "White"), ("Is it Brown?: ", "Brown"),
+                        ("Is it Yellow?: ", "Yellow"), ("Is it Gray?: ", "Gray"),("Is it Orange?: ", "Orange"), 
+                        ("Is it Tan?: ", "Tan"), ("Is it Pink?: ", "Pink"), ("Is it Green?: ", "Green")],
+                [("Is it an Herbivore?: ", "Herbivore"), ("Is it a Carnivore?: ", "Carnivore"), ("Is it a Ommnivore?: ", "Ommnivore"), ("Is it a Insectivore?: ", "Insectivore")],
+                [("Does it live in the Grasslands?: ", "Grasslands"), ("Does it live in the Arctic?: ", "Arctic"), 
+                ("Does it live in the Savannas?: ", "Savannas"), ("Does it live in the Rainforest?: ", "Rainforests"), 
+                ("Does it live in the Forest?: ", "Forests"), ("Does it live in the Ocean?: ", "Oceans"), ("Does it live in Coastal Waters?: ", "Coastal Waters"),
+                ("Does it live in the Mountains?: ", "Mountains"),("Does it live in the Desert?: ", "Deserts")]
+                ]
+        player_answers = []
+        
+        for arr in questions:
+            for (q, k) in arr:
+                answer = input(f" {q} ")
+                if answer.lower() == "yes":
+                    player_answers.append(k)
+                    break
+
+        print("Player answers:", player_answers)
+        
+start_game()
 class Akinator:
 #player method (Shafiqat)
     def player_input():
@@ -20,44 +51,6 @@ class Akinator:
         print("Please answer the following questions with yes or no.")
         player_input = input(f"Please enter your name")
         return player_input 
-
-    #start game function (Johnathan)
-    def start_game(questions, player_answers):
-        """
-        Starts the Akinator-style game where the program asks questions to 
-        form a guess about which animal the player is thinking of
-        
-        Args:
-            questions(list of lists of tuples): The list of questions the program will ask the player
-            player_answers(list): A list that stores the player answers
-        
-        Side Effects:
-            Prints out the player answers as a list called player_answers
-        """
-        print("This is the akinator style program, the game will try to guess what animal you're thinking about through a series of questions. Please respond with either yes/no!")
-
-        for arr in questions:
-            for (q, k) in arr:
-                answer = input(f" {q} ")
-                if answer.lower() == "yes":
-                    player_answers.append(k)
-                    break
-    questions = [[("Is it Black?: ", "Black"), ("Is it White?: ", "White"), ("Is it Brown?: ", "Brown"),
-                    ("Is it Yellow?: ", "Yellow"), ("Is it Gray?: ", "Gray"),("Is it Orange?: ", "Orange"), 
-                    ("Is it Tan?: ", "Tan"), ("Is it Pink?: ", "Pink"), ("Is it Green?: ", "Green")],
-            [("Is it an Herbivore?: ", "Herbivore"), ("Is it a Carnivore?: ", "Carnivore"), ("Is it a Ommnivore?: ", "Ommnivore"), ("Is it a Insectivore?: ", "Insectivore")],
-            [("Does it live in the Grasslands?: ", "Grasslands"), ("Does it live in the Arctic?: ", "Arctic"), 
-            ("Does it live in the Savannas?: ", "Savannas"), ("Does it live in the Rainforest?: ", "Rainforests"), 
-            ("Does it live in the Forest?: ", "Forests"), ("Does it live in the Ocean?: ", "Oceans"), ("Does it live in Coastal Waters?: ", "Coastal Waters"),
-            ("Does it live in the Mountains?: ", "Mountains"),("Does it live in the Desert?: ", "Deserts")],
-            ]
-
-    player_answers = []
-
-    start_game(questions, player_answers)
-
-    print("Player answers:", player_answers)
-
 
     #match question function (Shahil)
     def match_question(answer, dataset):
