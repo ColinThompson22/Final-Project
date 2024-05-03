@@ -36,6 +36,13 @@ def start_game():
         
 start_game()
 class Akinator:
+        def __init__(self):
+        self.player_name = ""
+        self.player_answers = []
+        self.num_questions_asked = 0
+        self.max_questions_before_guess = 10
+        self.dataset = None  # Initialize the dataset
+        
 #player method (Shafiqat)
     def player_input():
         """Prompt the player for their name and welcome them to the Akinator Game.
