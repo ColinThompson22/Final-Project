@@ -80,8 +80,8 @@ class Akinator:
          """
          questions = question_format()
          answer = start_game(questions, answer)
-         filtered_df = dataset.loc[(dataset[Color] == answer["color"]) and 
-                            (dataset[Diet] == answer["diet"]) and (dataset[Habitat]
+         filtered_df = dataset.loc[(dataset["Color"] == answer["color"]) and 
+                            (dataset["Diet"] == answer["diet"]) and (dataset["Habitat"]
                             == answer["habitat"])]
          final_match_list = filtered_df["Animal"].tolist()
          final_match = ""
