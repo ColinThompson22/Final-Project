@@ -44,7 +44,7 @@ class Akinator:
          self.dataset = None  # Initialize the dataset
         
 #player method (Shafiqat)
-        def player_input():
+        def player_input(self):
          """Prompt the player for their name and welcome them to the Akinator Game.
 
          This function displays a welcome message for the Akinator Game and prompts 
