@@ -168,11 +168,9 @@ def parse_args(argslist):
        Returns:
        namespcae= returns the parsed arguments as a namespace"""
     parser= ArgumentParser()
-    parser.add_argument("questions", help= "the question being asked to the"
-                       "user")
-    parser.add_argument("player_answers", help= "THe answer the player"
-                       "inputs")
+    parser.add_argument("dataset", help= "the datatset containing animal" 
+                        "info")
     return parser.parse_args(argslist)
 if __name__ == "__main__":
     args= parse_args(sys.argv[1:])
-    start_game(args.questions, args.player_answers)
+    start_game(args.dataset)
