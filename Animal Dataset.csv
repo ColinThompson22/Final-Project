@@ -1,9 +1,9 @@
 Animal,Color,Diet,Habitat
 Aardvark,Gray,Insectivore,Savannas
 Aardwolf,Yellow,Insectivore,Grasslands
-African Elephant,Gray,Herbivore,Savannah
+African Elephant,Gray,Herbivore,Savannas
 African Lion,Tan,Carnivore,Grasslands
-African Wild Dog,Brown,Carnivore,Savannahs
+African Wild Dog,Brown,Carnivore,Savannas
 Amazon Rainforest Frog,Green,Insectivore,Rainforest
 American Bison,Brown,Herbivore,Plains
 Anteater,Brown,Insectivore,Forests
@@ -77,7 +77,7 @@ Snowy Owl,White,Carnivore,Arctic
 Spectacled Bear,Tan,Omnivore,Forests
 Sperm Whale,Gray,Carnivore,Oceans
 Spider Monkey,Brown,Omnivore,Rainforests
-Spotted Hyena,Brown,Carnivore,Savannahs
+Spotted Hyena,Brown,Carnivore,Savannas
 Squirrel Monkey,Orange,Omnivore,Rainforests
 Sumatran Orangutan,Orange,Omnivore,Rainforests
 Sumatran Rhino,Brown,Herbivore,Rainforests
@@ -92,11 +92,11 @@ Tiger,Orange,Carnivore,Rainforests
 Titanoboa,Brown,Carnivore,Rainforests
 Toco Toucan,Black,Omnivore,Rainforests
 Tree Kangaroo,Brown,Herbivore,Rainforests
-Tsetse Fly,Brown,Carnivore,Savannahs
+Tsetse Fly,Brown,Carnivore,Savannas
 Vampire Bat,Brown,Carnivore,Forests
 Vulture,Black,Carnivore,Forests
 Walrus,Brown,Carnivore,Arctic
-Warthog,Brown,Omnivore,Savannahs
+Warthog,Brown,Omnivore,Savannas
 Water Buffalo,Gray,Herbivore,Grasslands
 Western Gorilla,Black,Herbivore,Rainforests
 Western Lowland Gorilla,Black,Herbivore,Rainforests
