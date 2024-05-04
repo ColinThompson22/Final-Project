@@ -114,27 +114,27 @@ class Akinator:
             None. The function prints a question to the console for the user to answer.
          '''
     #List of categories the computer guesses from 
-        question_categories = ["Color", "Diet", "Habitat"]
+         question_categories = ["Color", "Diet", "Habitat"]
             
 
     # Select a random characteristic to ask about
-        characteristic = random.choice(question_categories)
+         characteristic = random.choice(question_categories)
 
     #Format and print the question
     #Allows computer to ask the user what certain characteristics are from the categories from the list
-        computer_question = f"What is the {characteristic} of the animal you're thinking of?"
-        print(question)
+         computer_question = f"What is the {characteristic} of the animal you're thinking of?"
+         print(question)
         
 
     #Determines how many quesitons have been asked before guessing 
-        self.num_questions_asked = 0
-        self.max_questions_before_guess = 10 
+         self.num_questions_asked = 0
+         self.max_questions_before_guess = 10 
         
     # Checks if the limit of questions before guessing has been reached
-        if self.num_questions_asked >= self.max_questions_before_guess:
-         print("Making a guess...")
-        else:
-         characteristic = random.choice(question_categories)
+         if self.num_questions_asked >= self.max_questions_before_guess:
+          print("Making a guess...")
+         else:
+          characteristic = random.choice(question_categories)
 
 
 
