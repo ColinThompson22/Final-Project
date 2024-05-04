@@ -3,38 +3,6 @@ import pandas as pd
 import random
 from argparse import ArgumentParser
 import sys
-dataset = pd.read_csv("Animal Dataset.csv")
-#start game function (Johnathan)
-def start_game(dataset):
-        """
-        Starts the Akinator-style game where the program asks questions to 
-        form a guess about which animal the player is thinking of
-        
-        Side Effects:
-            Prints out the player answers as a list called player_answers
-        """
-        
-        questions = [[("Is it Black?: ", "Black"), ("Is it White?: ", "White"), ("Is it Brown?: ", "Brown"),
-                        ("Is it Yellow?: ", "Yellow"), ("Is it Gray?: ", "Gray"),("Is it Orange?: ", "Orange"), 
-                        ("Is it Tan?: ", "Tan"), ("Is it Pink?: ", "Pink"), ("Is it Green?: ", "Green")],
-                [("Is it an Herbivore?: ", "Herbivore"), ("Is it a Carnivore?: ", "Carnivore"), ("Is it a Ommnivore?: ", "Ommnivore"), ("Is it a Insectivore?: ", "Insectivore")],
-                [("Does it live in the Grasslands?: ", "Grasslands"), ("Does it live in the Arctic?: ", "Arctic"), 
-                ("Does it live in the Savannas?: ", "Savannas"), ("Does it live in the Rainforest?: ", "Rainforests"), 
-                ("Does it live in the Forest?: ", "Forests"), ("Does it live in the Ocean?: ", "Oceans"), ("Does it live in Coastal Waters?: ", "Coastal Waters"),
-                ("Does it live in the Mountains?: ", "Mountains"),("Does it live in the Desert?: ", "Deserts")]
-                ]
-        player_answers = []
-        
-        for arr in questions:
-            for (q, k) in arr:
-                answer = input(f" {q} ")
-                if answer.lower() == "yes":
-                    player_answers.append(k)
-                    break
-
-        print("Player answers:", player_answers)
-        
-start_game(dataset)
 
 class Akinator:
         def __init__(self):
@@ -124,12 +92,6 @@ class Akinator:
     # Select a random characteristic to ask about
          characteristic = random.choice(question_categories)
 
-    #Format and print the question
-    #Allows computer to ask the user what certain characteristics are from the categories from the list
-         computer_question = f"What is the {characteristic} of the animal you're thinking of?"
-         print(computer_question)
-        
-
     #Determines how many quesitons have been asked before guessing 
          self.num_questions_asked = 0
          self.max_questions_before_guess = 10 
@@ -181,6 +143,42 @@ def repeat_game():
         else:
             print("Invalid input. Please enter 'yes' or 'no'.")
 
+#start game function (Johnathan)
+def start_game(dataset, response):
+        """
+        Starts the Akinator-style game where the program asks questions to 
+        form a guess about which animal the player is thinking of
+        
+        Side Effects:
+            Prints out the player answers as a list called player_answers
+        """
+        dataset = pd.read_csv("Animal Dataset.csv")
+        akinator = Akinator()
+        akinator.player_input()
+        akinator.question_file()
+        akinator.gamestate(response)
+        
+        questions = [[("Is it Black?: ", "Black"), ("Is it White?: ", "White"), ("Is it Brown?: ", "Brown"),
+                        ("Is it Yellow?: ", "Yellow"), ("Is it Gray?: ", "Gray"),("Is it Orange?: ", "Orange"), 
+                        ("Is it Tan?: ", "Tan"), ("Is it Pink?: ", "Pink"), ("Is it Green?: ", "Green")],
+                [("Is it an Herbivore?: ", "Herbivore"), ("Is it a Carnivore?: ", "Carnivore"), ("Is it a Ommnivore?: ", "Ommnivore"), ("Is it a Insectivore?: ", "Insectivore")],
+                [("Does it live in the Grasslands?: ", "Grasslands"), ("Does it live in the Arctic?: ", "Arctic"), 
+                ("Does it live in the Savannas?: ", "Savannas"), ("Does it live in the Rainforest?: ", "Rainforests"), 
+                ("Does it live in the Forest?: ", "Forests"), ("Does it live in the Ocean?: ", "Oceans"), ("Does it live in Coastal Waters?: ", "Coastal Waters"),
+                ("Does it live in the Mountains?: ", "Mountains"),("Does it live in the Desert?: ", "Deserts")]
+                ]
+        player_answers = []
+        akinator.match_question(answer, dataset)
+        
+        for arr in questions:
+            for (q, k) in arr:
+                answer = input(f" {q} ")
+                if answer.lower() == "yes":
+                    player_answers.append(k)
+                    break
+
+        print("Player answers:", player_answers)
+        
 def parse_args(argslist):
     """Parses the command line arguments
        
@@ -194,4 +192,5 @@ def parse_args(argslist):
     return parser.parse_args(argslist)
 if __name__ == "__main__":
     args= parse_args(sys.argv[1:])
-    start_game(args.dataset)
+    start_game(args.dataset, args.response)
+
