@@ -123,7 +123,7 @@ class Akinator:
     #Format and print the question
     #Allows computer to ask the user what certain characteristics are from the categories from the list
          computer_question = f"What is the {characteristic} of the animal you're thinking of?"
-         print(question)
+         print(computer_question)
         
 
     #Determines how many quesitons have been asked before guessing 
