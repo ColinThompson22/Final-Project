@@ -82,7 +82,7 @@ class Akinator:
             Prints questions that have to take a user input and a final statement
             into the terminal
          """
-         questions = question_format()
+         questions = questions.question_file
          answer = start_game(questions, answer)
          filtered_df = dataset.loc[(dataset["Color"] == answer["color"]) and 
                             (dataset["Diet"] == answer["diet"]) and (dataset["Habitat"]
