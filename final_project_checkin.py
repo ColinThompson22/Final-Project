@@ -152,15 +152,13 @@ class Akinator:
             The function prints out two f strings and modifies the values
             of current_question attribute."""
          if response.lower() == "yes":
-            self.current_question += 1
+            self.num_questions_asked += 1
+            print(f"The number of questions asked is {self.num_questions_asked}")
          elif response.lower() == "no":
-            self.current_question += 1
+            self.num_questions_asked += 1
+            print(f"The number of questions asked 9s {self.num_questions_asked}")
          else:
             raise ValueError("invalid input. Please answer either yes or no.")
-        self.num_questions_asked += 1
-        print(f"The number of questions asked is {self.num_questions_asked}")
-        print(f"Yhe number of animals left is {len(self.animals)}")
-        
 def parse_args(argslist):
     """Parses the command line arguments
        
