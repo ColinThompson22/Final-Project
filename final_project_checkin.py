@@ -163,6 +163,24 @@ class Akinator:
             print(f"The number of questions asked 9s {self.num_questions_asked}")
          else:
             raise ValueError("invalid input. Please answer either yes or no.")
+
+def repeat_game():
+    """
+    Asks the player if they want to play the game again.
+    If yes, resets the game parameters and starts the game again.
+    If no, prints a farewell message and exits the program.
+    """
+    while True:
+        play_again = input("Would you like to play again? (yes/no): ").lower()
+        if play_again == "yes":
+            # Reset game parameters 
+            start_game()
+        elif play_again == "no":
+            print("Thank you for playing! Goodbye.")
+            sys.exit()  # Exit the program
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
+
 def parse_args(argslist):
     """Parses the command line arguments
        
