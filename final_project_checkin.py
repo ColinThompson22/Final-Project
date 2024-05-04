@@ -3,9 +3,9 @@ import pandas as pd
 import random
 from argparse import ArgumentParser
 import sys
-
+dataset = pd.read_csv("Animal Dataset.csv")
 #start game function (Johnathan)
-def start_game():
+def start_game(dataset):
         """
         Starts the Akinator-style game where the program asks questions to 
         form a guess about which animal the player is thinking of
@@ -34,7 +34,8 @@ def start_game():
 
         print("Player answers:", player_answers)
         
-start_game()
+start_game(dataset)
+
 class Akinator:
         def __init__(self):
          self.player_name = ""
@@ -42,6 +43,9 @@ class Akinator:
          self.num_questions_asked = 0
          self.max_questions_before_guess = 10
          self.dataset = None  # Initialize the dataset
+         
+         def __repr__(self):
+            return f"Your animal is {self.player_answers[0]}, a {self.player_answers[1]}, and lives in {self.player_answers[0]}"
         
 #player method (Shafiqat)
         def player_input(self):
