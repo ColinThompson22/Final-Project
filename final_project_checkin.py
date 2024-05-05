@@ -51,10 +51,10 @@ class Akinator:
             into the terminal
          """
          questions = self.question_file
-         answer = start_game(dataset)
-         filtered_df = dataset.loc[(dataset["Color"] == answer["color"]) and 
-                            (dataset["Diet"] == answer["diet"]) and (dataset["Habitat"]
-                            == answer["habitat"])]
+         # answer = start_game(dataset)
+         filtered_df = dataset.loc[(dataset["Color"] == player_answers["Color"]) and 
+                            (dataset["Diet"] == player_answers["Diet"]) and (dataset["Habitat"]
+                            == player_answers["Habitat"])]
          final_match_list = filtered_df["Animal"].tolist()
          final_match = ""
          tries = 0
@@ -146,8 +146,7 @@ def start_game(dataset):
         """
         dataset = pd.read_csv("Animal Dataset.csv")
         akinator = Akinator()
-        akinator.player_input()
-        p_answers = akinator.player_answers
+        p_answers = akinator.player_input()
         
         questions = [[("Is it Black?: ", "Black"), ("Is it White?: ", "White"), ("Is it Brown?: ", "Brown"),
                         ("Is it Yellow?: ", "Yellow"), ("Is it Gray?: ", "Gray"),("Is it Orange?: ", "Orange"), 
@@ -159,18 +158,19 @@ def start_game(dataset):
                 ("Does it live in the Mountains?: ", "Mountains"),("Does it live in the Desert?: ", "Deserts")]
                 ]
         
-        akinator.question_file(questions)
-        akinator.match_question(p_answers, dataset)
+        
         
         for arr in questions:
             for (q,k) in arr:
                answer = input(f" {q} ")
                if answer.lower() == "yes":
                   akinator.player_answers.append(k)
+                  akinator.gamestate(answer)
+                  print("Player answers:", akinator.player_answers)
                   break
         
-        akinator.gamestate(answer)
-        print("Player answers:", akinator.player_answers)
+        
+        akinator.match_question(p_answers, dataset)
         
 def parse_args(argslist):
     """Parses the command line arguments
