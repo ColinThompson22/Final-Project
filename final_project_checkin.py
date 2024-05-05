@@ -75,7 +75,7 @@ class Akinator:
         
         
     #question format function (Mohammad)
-        def question_file(self):
+        def question_file(self, questions):
          '''
          Selects and formats a question from predefined categories based on the game state.
 
@@ -85,14 +85,13 @@ class Akinator:
          Returns:
             None. The function prints a question to the console for the user to answer.
          '''
-    #List of categories the computer guesses from 
-         question_categories = ["Color", "Diet", "Habitat"]
+         
             
 
     # Select a random characteristic to ask about
-         characteristic = random.choice(question_categories)
+         characteristic = random.choice(questions.keys())
 
-         print(f"Is it {characteristic.lower()}")
+         print(characteristic)
 
 
 
@@ -159,7 +158,7 @@ def start_game(dataset):
                 ("Does it live in the Mountains?: ", "Mountains"),("Does it live in the Desert?: ", "Deserts")]
                 ]
         
-        akinator.question_file()
+        akinator.question_file(questions)
         akinator.match_question(p_answers, dataset)
         
         for arr in questions:
