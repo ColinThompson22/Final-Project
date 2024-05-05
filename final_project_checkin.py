@@ -92,15 +92,7 @@ class Akinator:
     # Select a random characteristic to ask about
          characteristic = random.choice(question_categories)
 
-    #Determines how many quesitons have been asked before guessing 
-         self.num_questions_asked = 0
-         self.max_questions_before_guess = 10 
-        
-    # Checks if the limit of questions before guessing has been reached
-         if self.num_questions_asked >= self.max_questions_before_guess:
-          print("Making a guess...")
-         else:
-          characteristic = random.choice(question_categories)
+         print(f"Is it {characteristic.lower()}")
 
 
 
