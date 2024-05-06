@@ -37,8 +37,9 @@ class Akinator:
          the final question in order to make the final match.
 
          Args:
-            answer (start_game): A start_game object that is used to call the
-            start_game function. Then used to filter through the dataset
+            player_answers (start_game): A start_game object that is used to 
+            call the start_game function. Then used to filter through the 
+            dataset
             dataset (dataframe): The dataframe that contains the database this
             function will filter through in order to return the final match
 
@@ -50,28 +51,59 @@ class Akinator:
             Prints questions that have to take a user input and a final statement
             into the terminal
          """
-         questions = self.question_file
+         #questions = self.question_file
+         
          # answer = start_game(dataset)
-         filtered_df = dataset.loc[(dataset["Color"] == player_answers["Color"]) and 
-                            (dataset["Diet"] == player_answers["Diet"]) and (dataset["Habitat"]
-                            == player_answers["Habitat"])]
-         final_match_list = filtered_df["Animal"].tolist()
-         final_match = ""
-         tries = 0
-         while final_match == "":
-             final_question = input(f"Is the animal a {final_match_list[0]}?: ")
-             if final_question == "no":
+         #print(dataset)
+         
+         #player_answers = [x.lower() for x in self.player_answers]
+         #rint(player_answers[0])
+         #print(player_answers[1])
+         #print(player_answers[2])
+         
+         #if (dataset["Color"] == "white").any():
+             #print("wahoo!")
+         #else:
+             #print("whelp")   
+             
+         #black_rows = dataset.loc[dataset["Color"] == "black"]
+         #print(black_rows)
+         
+         filtered_df = dataset.loc[(dataset["Color"] == self.player_answers[0]) & 
+                            (dataset["Diet"] == self.player_answers[1]) & (dataset["Habitat"]
+                            == self.player_answers[2])]
+         
+         if filtered_df.empty:
+             print(f"No animal found in the database!")
+         else:
+            final_match_list = filtered_df["Animal"].values.tolist()
+         #print(final_match_list)
+            final_match = ""
+            tries = 0
+            while final_match == "":
+                final_question = input(f"Is the animal a {final_match_list[0]}?: ")
+                if final_question == "no":
 
-                final_match_list.pop(0)
-                tries += 1
-                if tries == 3:
+                    final_match_list.pop(0)
+                    tries += 1
+                    if tries == 3 or len(final_match_list) == 0:
                     #keep track of total score, maybe have an attribute in init
                     #that initializes the variable so that it can be used throughout
                     #have a score keeper method too
-                    return f"I give up!"
-             elif final_question == "yes":
-                final_match = final_match_list[0]
-                return f"The animal you're thinking of is: {final_match}"
+                        print(f"I give up!")
+                elif final_question == "yes":
+                    final_match = final_match_list[0]
+                    return f"The animal you're thinking of is: {final_match}"
+         #print("Column data types in dataset:")
+         #print(dataset.dtypes)
+         
+         #print("Unique values in 'Color':")
+         #print(dataset["Color"].unique())
+         
+         #print(filtered_df)
+
+        
+        
         
         
     #question format function (Mohammad)
