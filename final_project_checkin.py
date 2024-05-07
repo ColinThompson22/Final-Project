@@ -142,6 +142,7 @@ class Akinator:
         self.num_questions_asked += 1 if response.lower() in ["yes", "no"] else 0
         print(f"The number of questions asked is {self.num_questions_asked}")
 
+# repeat game Mohammad 
 def repeat_game(dataset):
     """
     Asks the player if they want to play the game again.
