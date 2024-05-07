@@ -3,6 +3,8 @@ import pandas as pd
 import random
 from argparse import ArgumentParser
 import sys
+import matplotlib.pyplot as plt
+
 
 
 class Akinator:
@@ -148,7 +150,7 @@ def repeat_game():
         play_again = input("Would you like to play again? (yes/no): ").lower()
         if play_again == "yes":
             # Reset game parameters 
-            start_game()
+            start_game(dataset)
         elif play_again == "no":
             print("Thank you for playing! Goodbye.")
             sys.exit()  # Exit the program
@@ -191,6 +193,7 @@ def start_game(dataset):
         
         
         akinator.match_question(player_answers, dataset)
+        repeat_game(dataset)
         
 def parse_args(argslist):
     """Parses the command line arguments
