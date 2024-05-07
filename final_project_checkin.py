@@ -100,7 +100,7 @@ class Akinator:
          df.plot.bar()
          plt.show()
    
-       repeat_game(dataset)
+       repeat_game(self, dataset)
            
         
     #question format function (Mohammad)
@@ -143,7 +143,7 @@ class Akinator:
         print(f"The number of questions asked is {self.num_questions_asked}")
 
 # repeat game Mohammad 
-def repeat_game(dataset):
+def repeat_game(self, dataset):
     """
     Asks the player if they want to play the game again.
     If yes, resets the game parameters and starts the game again.
@@ -155,6 +155,16 @@ def repeat_game(dataset):
             # Reset game parameters 
             start_game(dataset)
         elif play_again == "no":
+           # Assume self.score is structured like: {"Player score": [value], "Akinator score": [value]}
+         player_score = self.score["Player score"][0]
+         akinator_score = self.score["Akinator score"][0]
+
+         max_score = max(player_score, akinator_score)
+
+         if max_score == player_score:
+            print(f"The highest score is by the Player with {max_score}.")
+         elif max_score == akinator_score:
+            print(f"The highest score is by Akinator with {max_score}.")
             print("Thank you for playing! Goodbye.")
             sys.exit()  # Exit the program
         else:
@@ -197,7 +207,7 @@ def start_game(dataset):
         print(repr(akinator))
         
         akinator.match_question(player_answers, dataset)
-        repeat_game(dataset)
+        repeat_game(akinator, dataset)
         
 def parse_args(argslist):
     """Parses the command line arguments
