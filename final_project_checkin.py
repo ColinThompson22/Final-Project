@@ -99,6 +99,7 @@ class Akinator:
        if graph_request == "Yes" or "yes":
            #this doesn't show up for some reason
            df.plot.bar()
+           plt.show()
        repeat_game()
            
         
