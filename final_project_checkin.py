@@ -12,7 +12,7 @@ class Akinator:
       self.num_questions_asked = 0
       self.max_questions_before_guess = 10
       self.dataset = None  # Initialize the dataset
-      self.score = (0, 0)
+      self.score = {"Player score": [0], "Akinator score": [0]}
          
       def __repr__(self):
          return f"Your animal is {self.player_answers[0]}, a {self.player_answers[1]}, and lives in {self.player_answers[2]}"
@@ -75,21 +75,29 @@ class Akinator:
                     #that initializes the variable so that it can be used throughout
                     #have a score keeper method too
                             print("I give up!")
+                            self.score["Bot score"] = [x+1 for x in 
+                                                       self.score["Bot score"]]
                             final_match = "N/A"
                     except IndexError:
                         print("No more animals to guess! I give up!")
                 elif final_question == "yes":
                     final_match = final_match_list[0]
                     print(f"The animal you're thinking of is: {final_match}")
+                    self.score["Player score"] = [x+1 for x in 
+                                                    self.score["Player score"]]
                     #Haven't implemented game_over yet
-                    #self.game_over()
+                    self.game_over()
 
 
-   #def game_over(self):
-       #"""
-       #"""
-       #graph_request = input(f"Would you like to see the current score?: ")
-       #if graph_request == "Yes" or "yes":
+   def game_over(self):
+       """
+       """
+       df = pd.DataFrame.from_dict(self.score)
+       graph_request = input(f"Would you like to see the current score?: ")
+       if graph_request == "Yes" or "yes":
+           #this doesn't show up for some reason
+           df.plot.bar()
+       repeat_game()
            
         
     #question format function (Mohammad)
