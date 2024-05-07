@@ -79,6 +79,8 @@ class Akinator:
                             self.score["Player score"] = [x+1 for x in 
                                                     self.score["Player score"]]
                             final_match = "N/A"
+                            #doesn't ask if you want to see the score if you win
+                            #scores don't update, probably has to do with the repeat_game function
                     except IndexError:
                         print("No more animals to guess! I give up!")
                 elif final_question == "yes":
@@ -95,11 +97,8 @@ class Akinator:
        """
        df = pd.DataFrame.from_dict(self.score)
        graph_request = input(f"Would you like to see the current score?: ")
-       if graph_request == "Yes" or "yes":
-           #this doesn't show up for some reason
-         df.plot.bar()
-         plt.show()
-   
+       df.plot.bar()
+       plt.show() if graph_request.lower() == "yes" else ""
        repeat_game(self, dataset)
            
         
@@ -163,6 +162,8 @@ def repeat_game(self, dataset):
 
          if max_score == player_score:
             print(f"The highest score is by the Player with {max_score}.")
+            print("Thank you for playing! Goodbye.")
+            sys.exit() 
          elif max_score == akinator_score:
             print(f"The highest score is by Akinator with {max_score}.")
             print("Thank you for playing! Goodbye.")
