@@ -59,7 +59,7 @@ class Akinator:
       filtered_df = dataset.loc[(dataset["Color"] == self.player_answers[0]) & 
                             (dataset["Diet"] == self.player_answers[1]) & (dataset["Habitat"]
                             == self.player_answers[2])]
-         
+      print(self.score)   
       if filtered_df.empty:
           print(f"No animal found in the database!")
       else:
@@ -96,10 +96,11 @@ class Akinator:
        """
        df = pd.DataFrame.from_dict(self.score)
        graph_request = input(f"Would you like to see the current score?: ")
-       if graph_request == "Yes" or "yes":
+       df.plot.bar()
+       plt.show() if graph_request.lower() == "yes" else print("")
            #this doesn't show up for some reason
-           df.plot.bar()
-           plt.show()
+           #df.plot.bar()
+           #plt.show()
        repeat_game(dataset)
            
         
