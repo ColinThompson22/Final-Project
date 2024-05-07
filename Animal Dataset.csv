@@ -17,9 +17,9 @@ Australian Fur Seal,Gray,Carnivore,Coastal Waters
 Bald Eagle,Brown,Carnivore,Forests
 Barbary Macaque,Brown,Omnivore,Mountains
 Basking Shark,Gray,Carnivore,Oceans
-Bearded Dragon,Tan,Omnivore,Deserts
+Bearded Dragon,Tan,Omnivore,Desert
 Bengal Fox,Gray,Omnivore,Grasslands
-Bengal Tiger,Orange,Carnivore,Mangroves
+Bengal Tiger,Orange,Carnivore,Forests
 Blue Jay,Blue,Omnivore,Forests
 Blue Whale,Blue,Herbivore,Oceans
 Bottlenose Dolphin,Gray,Carnivore,Oceans
@@ -28,26 +28,26 @@ Burmese Python,Brown,Carnivore,Forests
 Capybara,Brown,Herbivore,Rainforests
 Cheetah,Tan ,Carnivore,Savannas
 Chimpanzee,Black,Omnivore,Rainforests
-Clownfish,Orange,Omnivore,Coral Reefs
+Clownfish,Orange,Omnivore,Coastal Waters
 Common Dolphin,Gray,Carnivore,Coastal Waters
 Common Snapping Turtle,Brown,Omnivore,Forests 
 Dingo,Tan,Carnivore,Grasslands
 Dugong,Gray,Herbivore,Coastal Waters
 Eastern Gorilla,Black,Herbivore,Rainforests
 Emperor Penguin,Black,Carnivore,Antarctic
-Gila Monster,Black,Carnivore,Deserts
+Gila Monster,Black,Carnivore,Desert
 Great White Shark,Gray,Carnivore,Oceans
 Green Anaconda,Green,Carnivore,Rainforests
 Green Sea Turtle,Green,Herbivore,Oceans
 Grevy's Zebra,White,Herbivore,Grasslands
 Harp Seal,Gray,Carnivore,Arctic
 Harpy Eagle,Gray,Carnivore,Rainforests
-Hippopotamus,Gray,Herbivore,Rivers
+Hippopotamus,Gray,Herbivore,Savannas
 Horseshoe Crab,Brown,Ommnivore ,Coastal Waters
 Hummingbird,Green,Insectivore ,Forests
 Humpback Whale,Gray,Omnivore,Oceans
 Japanese Giant Hornet,Yellow,Insectivore,Mountains
-Kangaroo Rat,Brown,Herbivore,Deserts
+Kangaroo Rat,Brown,Herbivore,Desert
 Komodo Dragon,Gray,Carnivore,Forests
 Leaf-tailed Gecko,Brown,Insectivore,Rainforests
 Leafy Sea Dragon,Green,Carnivore,Oceans
@@ -67,9 +67,8 @@ Praying Mantis,Green,Carnivore,Forests
 Red Fox,Brown,Omnivore,Forests
 Red Kangaroo,Red,Herbivore,Grasslands
 Red-Eyed Tree Frog,Green,Insectivore,Rainforests
-Rottweiler,Black,Carnivore,Worldwide
 Serval,Yellow,Carnivore,Grasslands
-Shoebill,Gray,Carnivore,Marshes
+Shoebill,Gray,Carnivore,Rainforests
 Shortfin Mako Shark,Blue,Carnivore,Oceans
 Sloth,Brown,Herbivore,Rainforests
 Snow Leopard,Gray,Carnivore,Mountains
@@ -82,12 +81,12 @@ Squirrel Monkey,Orange,Omnivore,Rainforests
 Sumatran Orangutan,Orange,Omnivore,Rainforests
 Sumatran Rhino,Brown,Herbivore,Rainforests
 Sumatran Tiger,Orange,Carnivore,Rainforests
-Sun Bear,Black,Omnivore,Tropical Forests
+Sun Bear,Black,Omnivore,Rainforests
 Tapir,Brown,Herbivore,Rainforests
 Tasmanian Devil,Black,Carnivore,Forests
-Tasmanian Tiger,Yellow,Carnivore,Australia
+Tasmanian Tiger,Yellow,Carnivore,Desert
 Termite,Yellow,Herbivore,Grasslands
-Thorny Devil,Tan,Insectivore,Deserts
+Thorny Devil,Tan,Insectivore,Desert
 Tiger,Orange,Carnivore,Rainforests
 Titanoboa,Brown,Carnivore,Rainforests
 Toco Toucan,Black,Omnivore,Rainforests
