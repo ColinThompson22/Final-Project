@@ -115,11 +115,12 @@ class Akinator:
       None. The function prints a question to the console for the user to answer.
       '''
       for tup in questions:
-         first_tup= tup[0]
+         first, second = tup
+         # first_tup= tup[0]
             
 
     # Select a random characteristic to ask about
-      characteristic = random.choice(first_tup)
+      characteristic = random.choice(first)
 
       print(characteristic)
 
