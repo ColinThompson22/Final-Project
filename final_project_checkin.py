@@ -16,8 +16,8 @@ class Akinator:
       self.dataset = None  # Initialize the dataset
       self.score = {"Player score": [0], "Akinator score": [0]}
          
-      def __repr__(self):
-         return f"Your animal is {self.player_answers[0]}, a {self.player_answers[1]}, and lives in {self.player_answers[2]}"
+   def __repr__(self):
+       return f"Your animal is {self.player_answers[0]}, a {self.player_answers[1]}, and lives in {self.player_answers[2]}"
         
 #player method (Shafiqat)
    def player_input(self):
@@ -191,6 +191,7 @@ def start_game(dataset):
                   print("Player answers:", akinator.player_answers)
                   break
         
+        print(repr(akinator))
         
         akinator.match_question(player_answers, dataset)
         repeat_game(dataset)
