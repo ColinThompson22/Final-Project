@@ -4,37 +4,39 @@ import random
 from argparse import ArgumentParser
 import sys
 
+
 class Akinator:
-        def __init__(self):
-         self.player_name = ""
-         self.player_answers = []
-         self.num_questions_asked = 0
-         self.max_questions_before_guess = 10
-         self.dataset = None  # Initialize the dataset
+   def __init__(self):
+      self.player_name = ""
+      self.player_answers = []
+      self.num_questions_asked = 0
+      self.max_questions_before_guess = 10
+      self.dataset = None  # Initialize the dataset
+      self.score = (0, 0)
          
-         def __repr__(self):
-            return f"Your animal is {self.player_answers[0]}, a {self.player_answers[1]}, and lives in {self.player_answers[0]}"
+      def __repr__(self):
+         return f"Your animal is {self.player_answers[0]}, a {self.player_answers[1]}, and lives in {self.player_answers[2]}"
         
 #player method (Shafiqat)
-        def player_input(self):
-         """Prompt the player for their name and welcome them to the Akinator Game.
+   def player_input(self):
+      """Prompt the player for their name and welcome them to the Akinator Game.
 
-         This function displays a welcome message for the Akinator Game and prompts 
-         the player to enter their name.
-         The player's name is then returned as the result of the function.
+      This function displays a welcome message for the Akinator Game and prompts 
+      the player to enter their name.
+      The player's name is then returned as the result of the function.
 
-         Returns:
-            str: The name entered by the player."""
+      Returns:
+         str: The name entered by the player."""
         
-         print("Welcome to the Akinator Game!")
-         print("Please answer the following questions with yes or no.")
-         player_input = input(f"Please enter your name: ")
-         return player_input 
+      print("Welcome to the Akinator Game!")
+      print("Please answer the following questions with yes or no.")
+      player_input = input(f"Please enter your name: ")
+      return player_input 
 
     #match question function (Shahil)
-        def match_question(self, player_answers, dataset):
-         """Matches questions to answers taken from the start_game function and asks
-         the final question in order to make the final match.
+   def match_question(self, player_answers, dataset):
+      """Matches questions to answers taken from the start_game function and asks
+      the final question in order to make the final match.
 
          Args:
             player_answers (start_game): A start_game object that is used to 
@@ -51,104 +53,88 @@ class Akinator:
             Prints questions that have to take a user input and a final statement
             into the terminal
          """
-         #questions = self.question_file
          
-         # answer = start_game(dataset)
-         #print(dataset)
-         
-         #player_answers = [x.lower() for x in self.player_answers]
-         #rint(player_answers[0])
-         #print(player_answers[1])
-         #print(player_answers[2])
-         
-         #if (dataset["Color"] == "white").any():
-             #print("wahoo!")
-         #else:
-             #print("whelp")   
-             
-         #black_rows = dataset.loc[dataset["Color"] == "black"]
-         #print(black_rows)
-         
-         filtered_df = dataset.loc[(dataset["Color"] == self.player_answers[0]) & 
+      filtered_df = dataset.loc[(dataset["Color"] == self.player_answers[0]) & 
                             (dataset["Diet"] == self.player_answers[1]) & (dataset["Habitat"]
                             == self.player_answers[2])]
          
-         if filtered_df.empty:
-             print(f"No animal found in the database!")
-         else:
-            final_match_list = filtered_df["Animal"].values.tolist()
-         #print(final_match_list)
-            final_match = ""
-            tries = 0
-            while final_match == "":
+      if filtered_df.empty:
+          print(f"No animal found in the database!")
+      else:
+          final_match_list = filtered_df["Animal"].values.tolist()
+          final_match = ""
+          tries = 0
+          while final_match == "":
                 final_question = input(f"Is the animal a {final_match_list[0]}?: ")
                 if final_question == "no":
-
-                    final_match_list.pop(0)
-                    tries += 1
-                    if tries == 3 or len(final_match_list) == 0:
+                    try:
+                        final_match_list.pop(0)
+                        tries += 1
+                        if tries == 3 or len(final_match_list) == 0:
                     #keep track of total score, maybe have an attribute in init
                     #that initializes the variable so that it can be used throughout
                     #have a score keeper method too
-                        print(f"I give up!")
+                            print("I give up!")
+                            final_match = "N/A"
+                    except IndexError:
+                        print("No more animals to guess! I give up!")
                 elif final_question == "yes":
                     final_match = final_match_list[0]
-                    return f"The animal you're thinking of is: {final_match}"
-         #print("Column data types in dataset:")
-         #print(dataset.dtypes)
-         
-         #print("Unique values in 'Color':")
-         #print(dataset["Color"].unique())
-         
-         #print(filtered_df)
+                    print(f"The animal you're thinking of is: {final_match}")
+                    #Haven't implemented game_over yet
+                    #self.game_over()
 
-        
-        
-        
+
+   #def game_over(self):
+       #"""
+       #"""
+       #graph_request = input(f"Would you like to see the current score?: ")
+       #if graph_request == "Yes" or "yes":
+           
         
     #question format function (Mohammad)
-        def question_file(self, questions):
-         '''
-         Selects and formats a question from predefined categories based on the game state.
+   def question_file(self, questions):
+      '''
+      Selects and formats a question from predefined categories based on the game state.
 
-         This method selects a random category from the list of question categories. If the number of questions asked
-         is below a certain threshold, it formats a question to ask the player.
+      This method selects a random category from the list of question categories. If the number of questions asked
+      is below a certain threshold, it formats a question to ask the player.
         
-         Returns:
-            None. The function prints a question to the console for the user to answer.
-         '''
-         for tup in questions:
-            first_tup= tup[0]
+      Returns:
+      None. The function prints a question to the console for the user to answer.
+      '''
+      for tup in questions:
+         first_tup= tup[0]
             
 
     # Select a random characteristic to ask about
-         characteristic = random.choice(first_tup)
+      characteristic = random.choice(first_tup)
 
-         print(characteristic)
+      print(characteristic)
 
 
 
     #game state function (Colin)
-        def gamestate(self, response):
-         """A method that will update the gamestate of the game and 
-         find the number of questions already asked and number of animals
-         guesses.
+   def gamestate(self, response):
+        """A method that will update the gamestate of the game and 
+        find the number of questions already asked and number of animals
+        guesses.
             
-            Args:
+        Args:
             resposne(str): The response of the user 
-            Raises:
-            ValueError: raises error when incorrect input is put in
-            Side effects:
-            The function prints out two f strings and modifies the values
-            of current_question attribute."""
-         if response.lower() == "yes":
-            self.num_questions_asked += 1
-            print(f"The number of questions asked is {self.num_questions_asked}")
-         elif response.lower() == "no":
-            self.num_questions_asked += 1
-            print(f"The number of questions asked 9s {self.num_questions_asked}")
-         else:
-            raise ValueError("invalid input. Please answer either yes or no.")
+        Raises:
+         ValueError: raises error when incorrect input is put in
+        Side effects:
+         The function prints out two f strings and modifies the values
+         of current_question attribute."""
+        if response.lower() == "yes":
+           self.num_questions_asked += 1
+           print(f"The number of questions asked is {self.num_questions_asked}")
+        elif response.lower() == "no":
+          self.num_questions_asked += 1
+          print(f"The number of questions asked 9s {self.num_questions_asked}")
+        else:
+          raise ValueError("invalid input. Please answer either yes or no.")
 
 def repeat_game():
     """
@@ -178,7 +164,7 @@ def start_game(dataset):
         """
         dataset = pd.read_csv("Animal Dataset.csv")
         akinator = Akinator()
-        p_answers = akinator.player_input()
+        player_answers = akinator.player_input()
         
         questions = [[("Is it Black?: ", "Black"), ("Is it White?: ", "White"), ("Is it Brown?: ", "Brown"),
                         ("Is it Yellow?: ", "Yellow"), ("Is it Gray?: ", "Gray"),("Is it Orange?: ", "Orange"), 
@@ -202,7 +188,7 @@ def start_game(dataset):
                   break
         
         
-        akinator.match_question(p_answers, dataset)
+        akinator.match_question(player_answers, dataset)
         
 def parse_args(argslist):
     """Parses the command line arguments
