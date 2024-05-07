@@ -59,7 +59,6 @@ class Akinator:
       filtered_df = dataset.loc[(dataset["Color"] == self.player_answers[0]) & 
                             (dataset["Diet"] == self.player_answers[1]) & (dataset["Habitat"]
                             == self.player_answers[2])]
-      print(self.score)   
       if filtered_df.empty:
           print(f"No animal found in the database!")
       else:
@@ -77,16 +76,16 @@ class Akinator:
                     #that initializes the variable so that it can be used throughout
                     #have a score keeper method too
                             print("I give up!")
-                            self.score["Bot score"] = [x+1 for x in 
-                                                       self.score["Bot score"]]
+                            self.score["Player score"] = [x+1 for x in 
+                                                    self.score["Player score"]]
                             final_match = "N/A"
                     except IndexError:
                         print("No more animals to guess! I give up!")
                 elif final_question == "yes":
                     final_match = final_match_list[0]
                     print(f"The animal you're thinking of is: {final_match}")
-                    self.score["Player score"] = [x+1 for x in 
-                                                    self.score["Player score"]]
+                    self.score["Akinator score"] = [x+1 for x in 
+                                                       self.score["Akinator score"]]
                     #Haven't implemented game_over yet
                     self.game_over(dataset)
 
@@ -96,11 +95,11 @@ class Akinator:
        """
        df = pd.DataFrame.from_dict(self.score)
        graph_request = input(f"Would you like to see the current score?: ")
-       df.plot.bar()
-       plt.show() if graph_request.lower() == "yes" else print("")
+       if graph_request == "Yes" or "yes":
            #this doesn't show up for some reason
-           #df.plot.bar()
-           #plt.show()
+         df.plot.bar()
+         plt.show()
+   
        repeat_game(dataset)
            
         
@@ -109,7 +108,7 @@ class Akinator:
       '''
       Selects and formats a question from predefined categories based on the game state.
 
-      This method selects a random category from the list of question categories. If the number of questions asked
+      This method selects a category from the list of question categories. If the number of questions asked
       is below a certain threshold, it formats a question to ask the player.
         
       Returns:
