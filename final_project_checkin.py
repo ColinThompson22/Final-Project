@@ -179,7 +179,7 @@ def start_game(dataset):
                 [("Does it live in the Grasslands?: ", "Grasslands"), ("Does it live in the Arctic?: ", "Arctic"), 
                 ("Does it live in the Savannas?: ", "Savannas"), ("Does it live in the Rainforest?: ", "Rainforests"), 
                 ("Does it live in the Forest?: ", "Forests"), ("Does it live in the Ocean?: ", "Oceans"), ("Does it live in Coastal Waters?: ", "Coastal Waters"),
-                ("Does it live in the Mountains?: ", "Mountains"),("Does it live in the Desert?: ", "Deserts")]
+                ("Does it live in the Mountains?: ", "Mountains"),("Does it live in the Desert?: ", "Desert"), ("Does it live in the Plains?: ", "Plains"), ("Does it live in the Tundra?: ", "Tundra")]
                 ]
         
         
