@@ -88,10 +88,10 @@ class Akinator:
                     self.score["Player score"] = [x+1 for x in 
                                                     self.score["Player score"]]
                     #Haven't implemented game_over yet
-                    self.game_over()
+                    self.game_over(dataset)
 
 
-   def game_over(self):
+   def game_over(self, dataset):
        """
        """
        df = pd.DataFrame.from_dict(self.score)
@@ -100,7 +100,7 @@ class Akinator:
            #this doesn't show up for some reason
            df.plot.bar()
            plt.show()
-       repeat_game()
+       repeat_game(dataset)
            
         
     #question format function (Mohammad)
@@ -141,7 +141,7 @@ class Akinator:
         self.num_questions_asked += 1 if response.lower() in ["yes", "no"] else 0
         print(f"The number of questions asked is {self.num_questions_asked}")
 
-def repeat_game():
+def repeat_game(dataset):
     """
     Asks the player if they want to play the game again.
     If yes, resets the game parameters and starts the game again.
