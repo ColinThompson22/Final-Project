@@ -135,14 +135,8 @@ class Akinator:
         Side effects:
          The function prints out two f strings and modifies the values
          of current_question attribute."""
-        if response.lower() == "yes":
-           self.num_questions_asked += 1
-           print(f"The number of questions asked is {self.num_questions_asked}")
-        elif response.lower() == "no":
-          self.num_questions_asked += 1
-          print(f"The number of questions asked 9s {self.num_questions_asked}")
-        else:
-          raise ValueError("invalid input. Please answer either yes or no.")
+        self.num_questions_asked += 1 if response.lower() in ["yes", "no"] else 0
+        print(f"The number of questions asked is {self.num_questions_asked}")
 
 def repeat_game():
     """
