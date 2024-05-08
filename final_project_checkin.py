@@ -102,9 +102,9 @@ class Akinator:
                     #that initializes the variable so that it can be used throughout
                     #have a score keeper method too
                             print("I give up!")
-                            self.game_over(dataset)
                             self.score["Player score"] = [x+1 for x in 
                                                     self.score["Player score"]]
+                            self.game_over(dataset)
                             final_match = "N/A"
                             #doesn't ask if you want to see the score if you win
                             #scores don't update, probably has to do with the repeat_game function
@@ -207,6 +207,7 @@ def repeat_game(obj, dataset):
             start_game(dataset)
         elif play_again == "no":
            # Assume self.score is structured like: {"Player score": [value], "Akinator score": [value]}
+         show_score("score_keeper.txt")
          player_score = obj.score["Player score"][0]
          akinator_score = obj.score["Akinator score"][0]
 
