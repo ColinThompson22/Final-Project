@@ -163,8 +163,7 @@ class Akinator:
             
         Args:
             resposne(str): The response of the user 
-        Raises:
-         ValueError: raises error when incorrect input is put in
+      
         Side effects:
          The function prints out two f strings and modifies the values
          of current_question attribute."""
