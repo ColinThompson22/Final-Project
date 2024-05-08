@@ -24,7 +24,7 @@ class Akinator:
                      Example: player_input="John", max_questions_before_guess=15
        """
       
-      self.player_input = kwargs.get("player_input", "")
+      self.inp = kwargs.get("player_input", "")
       self.player_answers = []
       self.num_questions_asked = 0
       self.max_questions_before_guess = kwargs.get("max_questions_before_guess", 10)
@@ -52,14 +52,14 @@ class Akinator:
       
       print("Welcome to the Akinator Game!")
       print("Please answer the following questions with yes or no.")
-      player_input = kwargs.get("player_name", None)
-      if player_input:
-       self.player_input = player_input
+      inp = kwargs.get("player_name", None)
+      if inp:
+          self.inp = inp
       else:
-        player_input = input("Please enter your name: ")
-        self.player_input = player_input
-        print(f"Welcome {self.player_input} to the Akinator Game!")
-        return self.player_input
+          inp = input("Please enter your name: ")
+          self.inp = inp
+          print(f"Welcome {self.inp} to the Akinator Game!")
+          return self.inp
 
     #match question function (Shahil)
    def match_question(self, player_answers, dataset):
