@@ -23,12 +23,13 @@ class Akinator:
            **kwargs: Additional keyword arguments to initialize attributes.
                      Example: player_input="John", max_questions_before_guess=15
        """
-        self.player_input = kwargs.get("player_input", "")
-        self.player_answers = []
-        self.num_questions_asked = 0
-        self.max_questions_before_guess = kwargs.get("max_questions_before_guess", 10)
-        self.dataset = kwargs.get("dataset", None)
-        self.score = {"Player score": [0], "Akinator score": [0]}
+      
+      self.player_input = kwargs.get("player_input", "")
+      self.player_answers = []
+      self.num_questions_asked = 0
+      self.max_questions_before_guess = kwargs.get("max_questions_before_guess", 10)
+      self.dataset = kwargs.get("dataset", None)
+      self.score = {"Player score": [0], "Akinator score": [0]}
 
          
    def __repr__(self):
@@ -46,21 +47,19 @@ class Akinator:
         player_name (str): Name of the player (if passed as a keyword argument).
 
       Returns:
-         str: The name entered by the player."""
-        
-   print("Welcome to the Akinator Game!")
-   print("Please answer the following questions with yes or no.")
-   player_input = kwargs.get("player_name", None)
-
-   if player_input:
-           self.player_input = player_input
-   else:
-           player_input = input("Please enter your name: ")
-           self.player_input = player_input
-
-   print(f"Welcome {self.player_input} to the Akinator Game!")
-   return self.player_input
-
+         str: The name entered by the player.
+         """
+      
+      print("Welcome to the Akinator Game!")
+      print("Please answer the following questions with yes or no.")
+      player_input = kwargs.get("player_name", None)
+      if player_input:
+       self.player_input = player_input
+      else:
+        player_input = input("Please enter your name: ")
+        self.player_input = player_input
+        print(f"Welcome {self.player_input} to the Akinator Game!")
+        return self.player_input
 
     #match question function (Shahil)
    def match_question(self, player_answers, dataset):
