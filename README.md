@@ -22,9 +22,10 @@ Attribution:
 |------------------------------------------------------|
 |start_game     |Johnathan Hill|                       |
 |_repr_         |              |Magic method           |
-|player_input   |Shafiqat Alao |                       |
+|player_input   |Shafiqat Alao |f-string               |
 |match_question |Shahil Paudel |                       |
 |question_file  |Mohammad      |                       |
 |gamestate      |Colin Thompson|                       |
 |repeat_game    |Mohammad      |                       |
 |parse_args     |Colin Thompson|ArgumentParser class   |
+|__init__       |Shafiqat Alao |Keyword Argument       |
