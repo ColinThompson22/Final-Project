@@ -118,8 +118,7 @@ class Akinator:
             Writes into score_keeper.txt
        """
        with open("score_keeper.txt", "a", encoding = "utf-8") as f:
-           f.write(f"{self.score['Player score'][0]} - 
-                   {self.score['Akinator score'][0]}\n")
+           f.write((f"{self.score['Player score'][0]} - {self.score['Akinator score'][0]}\n"))
 
 
    def game_over(self, dataset):
@@ -269,7 +268,7 @@ def start_game(dataset):
         
         print(repr(akinator))
         
-        akinator.match_question(player_answers, dataset)
+        akinator.match_question(dataset)
         repeat_game(akinator, dataset)
         show_score("score_keeper.txt")
         
