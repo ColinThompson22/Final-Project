@@ -8,32 +8,59 @@ import matplotlib.pyplot as plt
 
 
 class Akinator:
-   def __init__(self):
-      self.player_name = ""
-      self.player_answers = []
-      self.num_questions_asked = 0
-      self.max_questions_before_guess = 10
-      self.dataset = None  # Initialize the dataset
-      self.score = {"Player score": [0], "Akinator score": [0]}
+   def __init__(self, **kwargs):
+      """Initialize the Akinator game object.
+
+
+        Attributes:
+           player_input (str): The name of the player.
+           player_answers (list): A list to store player's answers during the game.
+           num_questions_asked (int): Counter to keep track of the number of questions asked.
+           max_questions_before_guess (int): Maximum number of questions to ask before guessing.
+           dataset (DataFrame or None): The dataset containing animal information.
+           score (dict): Dictionary to keep track of player and Akinator scores during the game.
+                         Example: {"Player score": [score], "Akinator score": [score]}
+           **kwargs: Additional keyword arguments to initialize attributes.
+                     Example: player_input="John", max_questions_before_guess=15
+       """
+        self.player_input = kwargs.get("player_input", "")
+        self.player_answers = []
+        self.num_questions_asked = 0
+        self.max_questions_before_guess = kwargs.get("max_questions_before_guess", 10)
+        self.dataset = kwargs.get("dataset", None)
+        self.score = {"Player score": [0], "Akinator score": [0]}
+
          
    def __repr__(self):
        return f"Your animal is {self.player_answers[0]}, a {self.player_answers[1]}, and lives in {self.player_answers[2]}"
         
 #player method (Shafiqat)
-   def player_input(self):
+   def player_input(self, **kwargs):
       """Prompt the player for their name and welcome them to the Akinator Game.
 
       This function displays a welcome message for the Akinator Game and prompts 
       the player to enter their name.
       The player's name is then returned as the result of the function.
 
+      Keyword Args:
+        player_name (str): Name of the player (if passed as a keyword argument).
+
       Returns:
          str: The name entered by the player."""
         
-      print("Welcome to the Akinator Game!")
-      print("Please answer the following questions with yes or no.")
-      player_input = input(f"Please enter your name: ")
-      return player_input 
+   print("Welcome to the Akinator Game!")
+   print("Please answer the following questions with yes or no.")
+   player_input = kwargs.get("player_name", None)
+
+   if player_input:
+           self.player_input = player_input
+   else:
+           player_input = input("Please enter your name: ")
+           self.player_input = player_input
+
+   print(f"Welcome {self.player_input} to the Akinator Game!")
+   return self.player_input
+
 
     #match question function (Shahil)
    def match_question(self, player_answers, dataset):
