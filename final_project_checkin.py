@@ -62,14 +62,11 @@ class Akinator:
           return self.inp
 
     #match question function (Shahil)
-   def match_question(self, player_answers, dataset):
+   def match_question(self, dataset):
       """Matches questions to answers taken from the start_game function and asks
       the final question in order to make the final match.
 
          Args:
-            player_answers (start_game): A start_game object that is used to 
-            call the start_game function. Then used to filter through the 
-            dataset
             dataset (dataframe): The dataframe that contains the database this
             function will filter through in order to return the final match
 
@@ -98,16 +95,11 @@ class Akinator:
                         final_match_list.pop(0)
                         tries += 1
                         if tries == 3 or len(final_match_list) == 0:
-                    #keep track of total score, maybe have an attribute in init
-                    #that initializes the variable so that it can be used throughout
-                    #have a score keeper method too
                             print("I give up!")
                             self.score["Player score"] = [x+1 for x in 
                                                     self.score["Player score"]]
                             self.game_over(dataset)
                             final_match = "N/A"
-                            #doesn't ask if you want to see the score if you win
-                            #scores don't update, probably has to do with the repeat_game function
                     except IndexError:
                         print("No more animals to guess! I give up!")
                 elif final_question == "yes":
@@ -115,13 +107,19 @@ class Akinator:
                     print(f"The animal you're thinking of is: {final_match}")
                     self.score["Akinator score"] = [x+1 for x in 
                                                        self.score["Akinator score"]]
-                    #Haven't implemented game_over yet
                     self.game_over(dataset)
 
     #keep_score method (Shahil)
    def keep_score(self):
+       """Keeps the scores of every instance of the game by writing into a
+       text file called "score_keeper.txt"
+       
+       Side effects:
+            Writes into score_keeper.txt
+       """
        with open("score_keeper.txt", "a", encoding = "utf-8") as f:
-           f.write(f"{self.score['Player score'][0]} - {self.score['Akinator score'][0]}\n")
+           f.write(f"{self.score['Player score'][0]} - 
+                   {self.score['Akinator score'][0]}\n")
 
 
    def game_over(self, dataset):
@@ -176,6 +174,17 @@ class Akinator:
 
 #show_score function (Shahil)
 def show_score(filepath):
+    """Shows the total score between the player and Akinator if the player
+    says that they would like to see it. Total score calculated by adding all
+    the scores for player and Akinator from the score_keeper file separately.
+
+    Args:
+        filepath (.txt file): Path to the file, in this case, the score_keeper
+        file.
+    Side effects:
+        Asks the user if they would like to see the total score and prints
+        the score to the terminal.
+    """
     total_player_score = 0
     total_akinator_score = 0
     score_request = input("Would you like to see the total score?: ")
