@@ -76,6 +76,7 @@ class Akinator:
                     #that initializes the variable so that it can be used throughout
                     #have a score keeper method too
                             print("I give up!")
+                            self.game_over(dataset)
                             self.score["Player score"] = [x+1 for x in 
                                                     self.score["Player score"]]
                             final_match = "N/A"
@@ -91,7 +92,12 @@ class Akinator:
                     #Haven't implemented game_over yet
                     self.game_over(dataset)
 
+    #keep_score method (Shahil)
+   def keep_score(self):
+       with open("score_keeper.txt", "a", encoding = "utf-8") as f:
+           f.write(f"{self.score["Player score"][0]} - {self.score["Akinator score"][0]}\n")
 
+    
    def game_over(self, dataset):
        """
        """
@@ -99,6 +105,7 @@ class Akinator:
        graph_request = input(f"Would you like to see the current score?: ")
        df.plot.bar()
        plt.show() if graph_request.lower() == "yes" else ""
+       self.keep_score()
        repeat_game(self, dataset)
            
         
@@ -141,8 +148,22 @@ class Akinator:
         self.num_questions_asked += 1 if response.lower() in ["yes", "no"] else 0
         print(f"The number of questions asked is {self.num_questions_asked}")
 
+#show_score function (Shahil)
+def show_score(filepath):
+    total_player_score = 0
+    total_akinator_score = 0
+    file = open(filepath, "r", encoding = "utf-8")
+    data = file.read()
+    score_list = data.split("\n")
+    del score_list[-1]
+    for item in score_list:
+        separated = item.split()
+        total_player_score += int(separated[0])
+        total_akinator_score += int(separated[2])
+    print(f"Total score if {total_player_score} - {total_akinator_score}")
+
 # repeat game Mohammad 
-def repeat_game(self, dataset):
+def repeat_game(obj, dataset):
     """
     Asks the player if they want to play the game again.
     If yes, resets the game parameters and starts the game again.
@@ -155,8 +176,8 @@ def repeat_game(self, dataset):
             start_game(dataset)
         elif play_again == "no":
            # Assume self.score is structured like: {"Player score": [value], "Akinator score": [value]}
-         player_score = self.score["Player score"][0]
-         akinator_score = self.score["Akinator score"][0]
+         player_score = obj.score["Player score"][0]
+         akinator_score = obj.score["Akinator score"][0]
 
          max_score = max(player_score, akinator_score)
 
