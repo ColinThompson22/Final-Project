@@ -95,9 +95,9 @@ class Akinator:
     #keep_score method (Shahil)
    def keep_score(self):
        with open("score_keeper.txt", "a", encoding = "utf-8") as f:
-           f.write(f"{self.score["Player score"][0]} - {self.score["Akinator score"][0]}\n")
+           f.write(f"{self.score['Player score'][0]} - {self.score['Akinator score'][0]}\n")
 
-    
+
    def game_over(self, dataset):
        """
        """
@@ -152,15 +152,20 @@ class Akinator:
 def show_score(filepath):
     total_player_score = 0
     total_akinator_score = 0
-    file = open(filepath, "r", encoding = "utf-8")
-    data = file.read()
-    score_list = data.split("\n")
-    del score_list[-1]
-    for item in score_list:
-        separated = item.split()
-        total_player_score += int(separated[0])
-        total_akinator_score += int(separated[2])
-    print(f"Total score if {total_player_score} - {total_akinator_score}")
+    score_request = input("Would you like to see the total score?: ")
+    if score_request.lower() == "yes":
+        file = open(filepath, "r", encoding = "utf-8")
+        data = file.read()
+        score_list = data.split("\n")
+        del score_list[-1]
+        for item in score_list:
+            separated = item.split()
+            total_player_score += int(separated[0])
+            total_akinator_score += int(separated[2])
+        print(f"Total score if {total_player_score} - {total_akinator_score}")
+    else:
+        pass
+    
 
 # repeat game Mohammad 
 def repeat_game(obj, dataset):
@@ -230,6 +235,7 @@ def start_game(dataset):
         
         akinator.match_question(player_answers, dataset)
         repeat_game(akinator, dataset)
+        show_score("score_keeper.txt")
         
 def parse_args(argslist):
     """Parses the command line arguments
