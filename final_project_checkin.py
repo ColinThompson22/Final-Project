@@ -118,16 +118,21 @@ class Akinator:
             Writes into score_keeper.txt
        """
        with open("score_keeper.txt", "a", encoding = "utf-8") as f:
-           f.write((f"{self.score['Player score'][0]} - {self.score['Akinator score'][0]}\n"))
-
+          f.write(
+             f"{self.score['Player score'][0]} - "
+             f"{self.score['Akinator score'][0]}\n"
+             )
 
    def game_over(self, dataset):
-       """Asks the player if they would like to see the score at the end of a
-       round. Then calls the keep_score method to keep the score and the
-       repeat_game function to end the current iteration of the game. 
+       """
+         Ends the current game session, plots the score graph, writes the scores into a file, and offers the option to replay.
 
-       Args:
-           dataset (dataframe): The database that contains all of the animals.
+         Args:
+            dataset (DataFrame): The DataFrame used for the game session.
+
+          Side effects:
+          - Writes to 'score_keeper.txt' appending the current scores at the end of the file.
+          - Modifies the score attribute of the instance to record the latest game results.
        """
        df = pd.DataFrame.from_dict(self.score)
        graph_request = input(f"Would you like to see the current score?: ")
@@ -137,16 +142,24 @@ class Akinator:
        repeat_game(self, dataset)
            
         
-    #question format function (Mohammad)
+    # question format function (Mohammad)
    def question_file(self, questions):
       '''
-      Selects and formats a question from predefined categories based on the game state.
+      Selects and prints a question to the console based on the current game state and a predefined set
+      of question categories.
 
-      This method selects a category from the list of question categories. If the number of questions asked
-      is below a certain threshold, it formats a question to ask the player.
-        
-      Returns:
-      None. The function prints a question to the console for the user to answer.
+
+    Args:
+        questions (list of tuple): A list of tuples where each tuple contains a
+                        set of related questions and associated category. 
+                        Each tuple is structured (question_str, category_str).
+    Returns:
+        None. 
+
+    Side effects:
+        - Modifies internal state by selecting a  question based on the game state.
+        - Prints a question to the console for the user to answer which affects the console's output state.
+    """
       '''
       for tup in questions:
          first, second = tup
@@ -168,14 +181,15 @@ class Akinator:
             
         Args:
             resposne(str): The response of the user 
-      
+        Raises:
+         ValueError: raises error when incorrect input is put in
         Side effects:
          The function prints out two f strings and modifies the values
          of current_question attribute."""
         self.num_questions_asked += 1 if response.lower() in ["yes", "no"] else 0
         print(f"The number of questions asked is {self.num_questions_asked}")
 
-#show_score function (Shahil)
+# show_score function (Shahil)
 def show_score(filepath):
     """Shows the total score between the player and Akinator if the player
     says that they would like to see it. Total score calculated by adding all
@@ -188,30 +202,29 @@ def show_score(filepath):
         Asks the user if they would like to see the total score and prints
         the score to the terminal.
     """
-    total_player_score = 0
-    total_akinator_score = 0
-    score_request = input("Would you like to see the total score?: ")
-    if score_request.lower() == "yes":
-        file = open(filepath, "r", encoding = "utf-8")
-        data = file.read()
-        score_list = data.split("\n")
-        del score_list[-1]
-        for item in score_list:
-            separated = item.split()
-            total_player_score += int(separated[0])
-            total_akinator_score += int(separated[2])
-        print(f"Total score if {total_player_score} - {total_akinator_score}")
-    else:
-        pass
+          
     
 
-# repeat game Mohammad 
+# repeat game (Mohammad)
 def repeat_game(obj, dataset):
     """
-    Asks the player if they want to play the game again.
-    If yes, resets the game parameters and starts the game again.
-    If no, prints a farewell message and exits the program.
-    """
+    Offers the player the option to play the game again. If the player chooses to continue, 
+    the game parameters are reset and the game restarts. If the player chooses to end, 
+    it displays the final scores and exits the program.
+
+    Args:
+        obj (Akinator): The game object instance that contains the current game state.
+        dataset (DataFrame): The DataFrame that the game uses for querying animal data.
+
+    Side Effects:
+        - Inputs from the user determine whether the game restarts or ends.
+        - Modifies the game state by resetting parameters if the game restarts.
+        - Writes the final scores to the console if the game ends.
+        - Exits the program if the player decides not to continue.
+
+    Returns:
+        None
+   """
     while True:
         play_again = input("Would you like to play again? (yes/no): ").lower()
         if play_again == "yes":
@@ -220,7 +233,7 @@ def repeat_game(obj, dataset):
         elif play_again == "no":
            # Assume self.score is structured like: {"Player score": [value], "Akinator score": [value]}
          show_score("score_keeper.txt")
-         player_score = obj.score["Player score"][0]
+         player_score = obj.score["Player score"][0]          
          akinator_score = obj.score["Akinator score"][0]
 
          max_score = max(player_score, akinator_score)
@@ -272,7 +285,7 @@ def start_game(dataset):
         
         print(repr(akinator))
         
-        akinator.match_question(dataset)
+        akinator.match_question(player_answers, dataset)
         repeat_game(akinator, dataset)
         show_score("score_keeper.txt")
         
