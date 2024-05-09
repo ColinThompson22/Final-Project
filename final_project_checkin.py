@@ -285,7 +285,7 @@ def start_game(dataset):
         
         print(repr(akinator))
         
-        akinator.match_question(player_answers, dataset)
+        akinator.match_question(dataset)
         repeat_game(akinator, dataset)
         show_score("score_keeper.txt")
         
