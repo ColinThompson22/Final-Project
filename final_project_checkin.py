@@ -122,7 +122,12 @@ class Akinator:
 
 
    def game_over(self, dataset):
-       """
+       """Asks the player if they would like to see the score at the end of a
+       round. Then calls the keep_score method to keep the score and the
+       repeat_game function to end the current iteration of the game. 
+
+       Args:
+           dataset (dataframe): The database that contains all of the animals.
        """
        df = pd.DataFrame.from_dict(self.score)
        graph_request = input(f"Would you like to see the current score?: ")
