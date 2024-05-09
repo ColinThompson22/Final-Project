@@ -58,8 +58,8 @@ the round.
 |_repr_         |Johnathan Hill|Magic method           |
 |player_input   |Shafiqat Alao |f-string               |
 |match_question |Shahil Paudel |Pandas, list comprehension|
-|game_over      |Mohammad      |Data visualization     |
-|question_file  |Mohammad      |None                   |
+|game_over      |Mohammad Ibrahim|Data visualization     |
+|question_file  |Mohammad Ibrahim|None                   |
 |gamestate      |Colin Thompson|Conditional expression |
 |show_score     |Shahil Paudel |None                   |
 |repeat_game    |Mohammad      |Key function           |
